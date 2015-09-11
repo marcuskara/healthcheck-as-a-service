@@ -77,7 +77,7 @@ class Zabbix(object):
         string_expression = ("{{%s:web.test.error[{item_name}]."
                              "str(required pattern not found)}}=1") % host_name
         
-        expression = "%s | %s & %s" % (status_expression, failed_expression,
+        expression = "%s or %s and %s" % (status_expression, failed_expression,
                                        string_expression)
         trigger_result = self.zapi.trigger.create(
             description="trigger for url {}".format(url),
